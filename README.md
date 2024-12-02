@@ -2,6 +2,9 @@
 
 ![Coding Crypto Degen Club](./image.png)
 
+## 🔔Join my Telegram community:
+CHANNEL: [DegenCoding](https://t.me/degencoding)
+
 ## 💻 Requirements
 
 - Python 3.11 or higher
@@ -11,7 +14,7 @@
 ## 🛠️ Installation
 1. **Clone the repository**
    ```bash
-   git clone [repository URL]
+   git clone https://github.com/AsheR4444/neon-v2
    ```
 2. **Set up a virtual environment**
    ```bash
@@ -41,5 +44,3 @@
    python app.py
    ```
 2. Enter "2" in the console.
-## Join my Telegram community:
-[DegenCoding](https://t.me/degencoding).
