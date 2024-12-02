@@ -1,5 +1,7 @@
 # Neon
 
+![Coding Crypto Degen Club](./image.png)
+
 ## 💻 Requirements
 
 - Python 3.11 or higher
@@ -41,4 +43,3 @@
 2. Enter "2" in the console.
 ## Join my Telegram community:
 [DegenCoding](https://t.me/degencoding).
-![Coding Crypto Degen Club](./image.png)
