@@ -5,6 +5,17 @@
 ## 🔔Join my Telegram community:
 CHANNEL: [DegenCoding](https://t.me/degencoding)
 
+## 🚀 Features
+**Swaps on [Mora swap](https://moraswap.com/exchange/swap)**
+ - NEON to token
+ - Token to token
+ - Token to neon
+ 
+**Current tokens used**
+ - WSOL
+ - USDT
+ - USDC
+
 ## 💻 Requirements
 
 - Python 3.11 or higher
