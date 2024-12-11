@@ -1,14 +1,14 @@
 import asyncio
 import time
 import random
-from os import PathLike
-
 from loguru import logger
+
 from web3 import Web3
 
 from web3.types import TxParams
 from data.models import Contracts
 from eth_async.models import TokenAmount, TxArgs
+from functions.notificator import Notificator
 from tasks.base import Base
 
 

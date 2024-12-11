@@ -1,3 +1,5 @@
+from sqlalchemy import select, func
+
 from utils.db_api.models import Base, Wallet
 from utils.db_api.db import DB
 
@@ -17,6 +19,11 @@ def get_wallet(private_key: str, sqlite_query: bool = False) -> Wallet | None:
 
     return db.one(Wallet, Wallet.private_key == private_key)
 
+def get_next_action_time():
+    stmt = select(func.min(Wallet.next_action_time))
+    next_action_time = db.one(stmt=stmt)
+
+    return next_action_time
 
 db = DB(f'sqlite:///{WALLETS_DB}', echo=False, pool_recycle=3600, connect_args={'check_same_thread': False})
 db.create_tables(Base)

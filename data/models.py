@@ -22,6 +22,9 @@ class Settings(Singleton, AutoRepr):
         self.actions_delay: FromTo = FromTo(
             from_=json_data['actions_delay']['from'], to_=json_data['actions_delay']['to']
         )
+        self.telegram_notifications_enabled: bool = json_data['telegram']['send_notifications']
+        self.telegram_bot_key: str = json_data['telegram']['bot_key']
+        self.telegram_chat_id: str = json_data['telegram']['chat_id']
         # self.use_neonpass_bridge: bool = json_data['use_neonpass_bridge']
         # self.use_swap_on_jupiter: bool = json_data['swap_on_jupiter']['enabled']
         # self.swap_on_jupiter_amount: FromTo = FromTo(from_=json_data['swap_on_jupiter']['amount']['from'], to_=json_data['swap_on_jupiter']['amount']['to'])

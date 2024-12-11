@@ -26,7 +26,7 @@ def update_expired() -> None:
             seconds=random.randint(0, int(settings.actions_delay.to_ / 2))
         )
         logger.info(
-            f'{wallet.address}: Action time was re-generated: '
+            f'{wallet.name}: Action time was re-generated: '
             f'{wallet.next_action_time}.'
         )
 

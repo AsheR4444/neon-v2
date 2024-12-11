@@ -27,6 +27,11 @@ def create_files():
         'minimal_balance': 0.0005,
         'eth_amount_for_swap': {'from': 0.01, 'to': 0.2 },
         'actions_delay': {'from': 28800, 'to': 43200},
+        'telegram': {
+            'send_notifications': False,
+            'bot_key': "",
+            'chat_id': ""
+        }
         #'use_neonpass_bridge': False,
         # 'swap_on_jupiter': {
         #     'enabled': False,
