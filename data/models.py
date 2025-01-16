@@ -62,7 +62,7 @@ class Contracts(Singleton):
     WNEON = RawContract(
         title='Wrapped Neon',
         address='0x202C35e517Fa803B537565c40F0a6965D7204609',
-        abi=DefaultABIs.Token
+        abi=read_json(path=(ABIS_DIR, 'WETH.json'))
     )
 
     WSOL = RawContract(

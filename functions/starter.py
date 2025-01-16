@@ -72,6 +72,7 @@ async def starter():
 
         except BaseException as e:
             Notificator.exception(f'Something went wrong: {e}')
+            await asyncio.sleep(500)
 
         finally:
             await asyncio.sleep(delay)

@@ -29,6 +29,7 @@ async def select_random_action(controller: Controller, wallet: Wallet):
     usdc_balance = await controller.client.wallet.balance(token=Contracts.NEON_USDC)
     usdt_balance = await controller.client.wallet.balance(token=Contracts.NEON_USDT)
     wsol_balance = await controller.client.wallet.balance(token=Contracts.WSOL)
+    wneon_balance = await controller.client.wallet.balance(token=Contracts.WNEON)
 
     if usdt_balance.Wei:
         possible_actions += [
@@ -51,7 +52,7 @@ async def select_random_action(controller: Controller, wallet: Wallet):
         weights += [
             1,
             1,
-            1,
+            1
         ]
 
     if wsol_balance.Wei:
@@ -63,6 +64,14 @@ async def select_random_action(controller: Controller, wallet: Wallet):
         weights += [
             1,
             1,
+            1,
+        ]
+
+    if wneon_balance.Wei:
+        possible_actions += [
+            controller.neon.unwrap_neon,
+        ]
+        weights += [
             1,
         ]
 

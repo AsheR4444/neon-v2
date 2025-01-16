@@ -72,7 +72,7 @@ class Mora(Base):
     ]
 
     async def _swap(self, path: list[bytes], amount: TokenAmount | None = None) -> str:
-        slippage = 5
+        slippage = 8
 
         to_token_address = Web3.to_checksum_address(path[-1])
         to_token = await self.client.contracts.default_token(contract_address=to_token_address)
@@ -195,3 +195,24 @@ class Mora(Base):
 
     async def swap_wsol_to_usdt(self):
         return await self._swap(path=Mora.PATH_FROM_WSOL_TO_USDT)
+
+    async def unwrap_neon(self):
+        amount = await self.client.wallet.balance(token=Contracts.WNEON)
+
+        contract = await self.client.contracts.get(contract_address=Contracts.WNEON)
+
+        args = TxArgs(wad=amount.Wei)
+
+        tx_params = TxParams(
+            to=contract.address,
+            data=contract.encodeABI("withdraw", args=args.tuple()),
+            value=0
+        )
+
+        tx = await self.client.transactions.sign_and_send(tx_params=tx_params)
+        receipt = await tx.wait_for_receipt(client=self.client, timeout=200)
+
+        if receipt and 'status' in receipt and receipt['status'] == 1:
+            return f'{amount.Ether} WNEON was swapped to NEON via Mora: https://neonscan.org/tx/{tx.hash.hex()}'
+
+        return f'fail https://neonscan.org/tx/{tx.hash.hex()}'

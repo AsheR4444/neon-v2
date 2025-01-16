@@ -2,7 +2,7 @@ import random
 from datetime import datetime, timedelta
 
 from loguru import logger
-from sqlalchemy import select
+from sqlalchemy import select, or_
 
 from data.models import Settings
 from utils.db_api.wallet_api import db, get_wallet
@@ -12,7 +12,10 @@ from utils.db_api.models import Wallet
 def update_expired() -> None:
     now = datetime.now()
     stmt = select(Wallet).where(
-        Wallet.next_action_time.is_(None),
+        or_(
+            Wallet.next_action_time.is_(None),
+            Wallet.next_action_time <= now,
+        )
     )
 
     expired_wallets: list[Wallet] = db.all(stmt=stmt)
